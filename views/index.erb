@@ -25,6 +25,10 @@
       Price: <%= product.price %> UAH
     </div>
 
+    <div id="in_cart_for_product_<%= product.id %>">
+      In cart: 0
+    </div>
+
     <div>
       <button type="button" class="btn btn-success btn-sm" onclick="add_to_cart(<%= product.id %>)">Add to cart</button>
     </div>
@@ -34,4 +38,3 @@
 </div>
 <br>
 <button class="btn btn-primary" onclick="something()">Click me</button>
-
