@@ -11,6 +11,7 @@ function add_to_cart(id) {
   x = x * 1 + 1;
   window.localStorage.setItem(key, x);
   update_cart();
+  update_orders_input()
 }
 
 function remove_from_cart(id) {
@@ -21,6 +22,7 @@ function remove_from_cart(id) {
     window.localStorage.setItem(key, x);
   }
   update_cart();
+  update_orders_input()
 }
 
 function update_cart() {
@@ -39,6 +41,7 @@ function update_cart() {
 
 $(document).ready(function(){
   update_cart()
+  update_orders_input()
 })
 
 function cart_get_orders(){
@@ -49,4 +52,9 @@ function cart_get_orders(){
     orders = orders + key + '=' + value + ',';
   }
   return orders;
+}
+
+function update_orders_input() {
+  var orders = cart_get_orders();
+  $('#orders_input').val(orders);
 }
