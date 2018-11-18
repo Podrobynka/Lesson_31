@@ -41,3 +41,4 @@ function remove_from_cart(id) {
 $(document).ready(function(){
   update_cart()
 })
+}
