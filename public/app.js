@@ -16,8 +16,10 @@ function add_to_cart(id) {
 function remove_from_cart(id) {
   var key = 'product_' + id;
   var x = window.localStorage.getItem(key);
-  x = x * 1 - 1;
-  window.localStorage.setItem(key, x);
+  if (x > 0) {
+    x = x * 1 - 1;
+    window.localStorage.setItem(key, x);
+  }
   update_cart();
 }
 
@@ -38,3 +40,13 @@ function update_cart() {
 $(document).ready(function(){
   update_cart()
 })
+
+function cart_get_orders(){
+  var orders = '';
+  for(var i=0; i < window.localStorage.length; i++) {
+    var key = localStorage.key(i);
+    var value = localStorage.getItem(key);
+    orders = orders + key + '=' + value + ',';
+  }
+  return orders;
+}
