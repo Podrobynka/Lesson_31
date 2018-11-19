@@ -1,0 +1,16 @@
+<table class="table">
+  <tbody>
+    <% @products.each do |product| %>
+    <tr id="cart_<%= product.id %>" style="display: none;">
+      <td><img src="<%= product.path_to_image %>"/></td>
+      <td><%= product.title %></td>
+      <td>Price for 1 item:
+        <span id="price_<%= product.id %>"><%= product.price %></span>
+        UAH</td>
+      <td id="in_cart_for_product_<%= product.id %>"></td>
+      <td id="amount_of_items_<%= product.id %>"></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
