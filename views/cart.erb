@@ -2,6 +2,12 @@
   <tbody>
     <% @products.each do |product| %>
     <tr id="cart_<%= product.id %>" style="display: none;">
+      <td>
+        <div class="input-group mb-3">
+          <input type="checkbox" aria-label="Checkbox for following text input">
+        </div>
+        <input type="hidden" class="form-control" aria-label="Text input with checkbox">
+      </td>
       <td><img src="<%= product.path_to_image %>" style="width: 100px;"/></td>
       <td><%= product.title %></td>
       <td>Price for 1 item:
@@ -14,7 +20,7 @@
   </tbody>
 </table>
 
-<form>
+<form action="/order" method="POST">
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputName">Name</label>
@@ -40,7 +46,9 @@
       <label for="inputZip">Zip</label>
       <input type="text" class="form-control" id="inputZip">
     </div>
-  </div>
 
-  <button type="submit" class="btn btn-primary">Buy</button>
+    <div class="form-group col-md-12 text-right">
+      <button type="submit" class="btn btn-primary btn-lg">Buy</button>
+    </div>
+  </div>
 </form>
