@@ -17,6 +17,11 @@ get '/about' do
   erb :about
 end
 
+get '/cart' do
+  @products = Product.all
+  erb :cart
+end
+
 post '/cart' do
   @products = Product.all
   erb :cart
