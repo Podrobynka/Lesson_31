@@ -1,16 +1,10 @@
 class CreateOrders < ActiveRecord::Migration[5.2]
   def change
     create_table :orders do |t|
-      t.string :title
+      t.integer :client_id, index: true
+      t.integer :product_id, index: true
       t.decimal :amount
       t.decimal :price
-      t.decimal :size
-      t.string :path_to_image
-      t.string :name
-      t.integer :phone
-      t.string :email
-      t.string :adress
-      t.integer :zip
 
       t.timestamps
     end
