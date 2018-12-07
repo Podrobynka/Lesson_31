@@ -1,3 +1,13 @@
+$(document).ready(function(){
+  update_cart();
+  cart_get_orders();
+  update_orders_input();
+  update_orders_input_for_submit();
+  update_orders_button();
+  hide_if_null();
+  count_amount();
+})
+
 function add_to_cart(id) {
   var key = 'product_' + id;
   var x = window.localStorage.getItem(key);
@@ -34,14 +44,6 @@ function update_cart() {
 //   });
 // }
 
-$(document).ready(function(){
-  update_cart();
-  update_orders_input();
-  update_orders_button();
-  hide_if_null()
-  count_amount();
-})
-
 function cart_get_orders(){
   var orders = '';
   for(var i=0; i < window.localStorage.length; i++) {
@@ -55,6 +57,12 @@ function cart_get_orders(){
 function update_orders_input() {
   var orders = cart_get_orders();
   $('#orders_input').val(orders);
+}
+
+function update_orders_input_for_submit() {
+  debugger
+  var orders = cart_get_orders();
+  $('#orders_input_for_submit').val(orders);
 }
 
 function cart_get_number_of_items() {
@@ -81,7 +89,6 @@ function count_amount() {
     amount = price * value;
     document.getElementById("amount_of_items_" + key.replace('product_','')).innerHTML = amount + ' UAH';
   }
-
 }
 
 function hide_if_null() {
@@ -93,6 +100,4 @@ function hide_if_null() {
     }
   }
 }
-// function set_amount() {
-//   amount = count_amount();
-// }
+
