@@ -1,0 +1,14 @@
+<table class="table">
+    <tbody>
+      <% @orders&.find_each do |order| %>
+      <tr>
+        <td><%= order.name %></td>
+        <td><%= order.phone %></td>
+        <td><%= order.email %></td>
+        <td><%= order.address %></td>
+        <td><%= order.zip %></td>
+        <td><%= order.orders %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
