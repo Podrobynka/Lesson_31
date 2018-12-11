@@ -1,50 +1,22 @@
-<table class="table">
+<h2>You cart</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">price</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
   <tbody>
-    <% @products&.find_each do |product| %>
-    <tr id="cart_<%= product.id %>" style="display: none;">
-      <td><img src="<%= product.path_to_image %>" style="width: 100px;"/></td>
-      <td><%= product.title %></td>
-      <td>Price for 1 item:
-        <span id="price_<%= product.id %>"><%= product.price %></span>
-        UAH
-      </td>
-      <td id="in_cart_for_product_<%= product.id %>"></td>
-      <td id="amount_of_items_<%= product.id %>"></td>
+    <% @items.each do |item| %>
+    <tr>
+      <th scope="row"><%= item[0].id %></th>
+      <td><%= item[0].title %></td>
+      <td><%= item[0].price %></td>
+      <td><%= item[1] %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-
-<form action="/order" method="POST">
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="inputName">Name</label>
-      <input name="name" type="text" class="form-control" id="inputName" placeholder="Name">
-    </div>
-
-    <div class="form-group col-md-4">
-      <label for="inputPhone">Phone</label>
-      <input name="phone" type="text" class="form-control" id="inputPhone" placeholder="Phone">
-    </div>
-
-    <div class="form-group col-md-4">
-      <label for="inputEmail">Email</label>
-      <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email">
-    </div>
-
-    <div class="form-group col-md-9">
-      <label for="inputAddress">Address</label>
-      <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Region, city, street, house number">
-    </div>
-
-    <div class="form-group col-md-3">
-      <label for="inputZip">Zip</label>
-      <input name="zip" type="text" class="form-control" id="inputZip">
-    </div>
-
-    <div class="form-group col-md-12 text-right">
-      <input id="orders_input_for_submit" name="orders" type="hidden" />
-      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-    </div>
-  </div>
-</form>
