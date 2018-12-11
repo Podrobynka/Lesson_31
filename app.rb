@@ -17,30 +17,49 @@ get '/' do
 end
 
 get '/cart' do
-  @products = Product.all
+  # @products = Product.all
   erb :cart
 end
 
 post '/cart' do
-  @products = Product.all
+  require 'pry'
+  orders_input = params[:orders_input]
+  @items = parse_orders_line(orders_input)
+
+  @items.each do |item|
+    item[0] = Product.find(item[0])
+  end
+
   erb :cart
 end
 
-get '/order' do
-  @orders = Order.all
-  erb :orders
-end
+# get '/order' do
+#   @orders = Order.all
+#   erb :orders
+# end
 
-post '/order' do
-  @orders = Order.all
-  Order.create(params)
-  erb :orders
-end
+# post '/order' do
+#   @orders = Order.all
+#   Order.create(params)
+#   erb :orders
+# end
 
-get '/visit' do
-  erb :visit
-end
+def parse_orders_line(orders_input)
+  s1 = orders_input.split(/,/)
 
-post '/visit' do
-  erb :visit
+  arr = []
+
+  s1.each do |x|
+    s2 = x.split(/=/)
+    s3 = s2[0].split(/_/)
+
+    id = s3[1]
+    quantity = s2[1]
+
+    arr2 = [id, quantity]
+
+    arr.push(arr2) unless id.nil?
+  end
+
+  arr
 end
