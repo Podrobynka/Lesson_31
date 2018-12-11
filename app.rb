@@ -16,13 +16,7 @@ get '/' do
   erb :index
 end
 
-get '/cart' do
-  # @products = Product.all
-  erb :cart
-end
-
 post '/cart' do
-  require 'pry'
   orders_input = params[:orders_input]
   @items = parse_orders_line(orders_input)
 
