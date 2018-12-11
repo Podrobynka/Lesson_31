@@ -1,7 +1,7 @@
 $(document).ready(function(){
   update_orders_input('#orders_input');
   update_orders_input('#orders_input_for_submit');
-  update_orders_button('#update_orders_button');
+  update_orders_button();
   update_cart();
   hide_if_null();
   count_amount();
@@ -74,9 +74,9 @@ function cart_get_number_of_items() {
   return count
 }
 
-function update_orders_button(id) {
+function update_orders_button() {
   var text = 'Cart (' + cart_get_number_of_items() + ')';
-  $(id).val(text);
+  $('#update_orders_button').val(text);
 }
 
 function count_amount() {
