@@ -32,10 +32,10 @@ get '/order' do
   erb :orders
 end
 
-post '/order' do
+post '/place_order' do
   @orders = Order.all
   Order.create(params)
-  erb :orders
+  erb 'Your order is accepted.'
 end
 
 def parse_orders_line(orders_input)
