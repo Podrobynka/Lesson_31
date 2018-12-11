@@ -1,6 +1,5 @@
 $(document).ready(function(){
-  update_orders_input('#orders_input');
-  update_orders_input('#orders_input_for_submit');
+  update_orders_input();
   update_orders_button();
   update_cart();
   hide_if_null();
@@ -51,17 +50,25 @@ function update_cart() {
 
 function cart_get_orders(){
   var orders = '';
-  for(var i=0; i < window.localStorage.length; i++) {
-    var key = localStorage.key(i);
-    var value = localStorage.getItem(key);
+  $.each(localStorage, function(key, value){
     orders = orders + key + '=' + value + ', ';
-  }
+  });
   return orders;
 }
 
-function update_orders_input(id) {
+// function cart_get_orders(){
+//   var orders = '';
+//   for(var i=0; i < window.localStorage.length; i++) {
+//     var key = localStorage.key(i);
+//     var value = localStorage.getItem(key);
+//     orders = orders + key + '=' + value + ', ';
+//   }
+//   return orders;
+// }
+
+function update_orders_input() {
   var orders = cart_get_orders();
-  $(id).val(orders);
+  $('#orders_input').val(orders);
 }
 
 function cart_get_number_of_items() {
