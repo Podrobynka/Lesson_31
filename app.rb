@@ -27,16 +27,16 @@ post '/cart' do
   erb :cart
 end
 
-# get '/order' do
-#   @orders = Order.all
-#   erb :orders
-# end
+get '/order' do
+  @orders = Order.all
+  erb :orders
+end
 
-# post '/order' do
-#   @orders = Order.all
-#   Order.create(params)
-#   erb :orders
-# end
+post '/order' do
+  @orders = Order.all
+  Order.create(params)
+  erb :orders
+end
 
 def parse_orders_line(orders_input)
   s1 = orders_input.split(/,/)
