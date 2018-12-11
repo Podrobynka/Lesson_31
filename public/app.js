@@ -103,12 +103,9 @@ function count_amount() {
 }
 
 function hide_if_null() {
-  for(var i=0; i < localStorage.length; i++) {
-    var key = localStorage.key(i);
-    var value = localStorage.getItem(key);
+  $.each(localStorage, function(key, value){
     if (value != 0) {
       $('#cart_' + key.replace('product_','')).show();
     }
-  }
+  });
 }
-
