@@ -1,11 +1,20 @@
+$(document).ready(function(){
+  update_orders_input('#orders_input');
+  update_orders_input('#orders_input_for_submit');
+  update_orders_button('#update_orders_button');
+  update_cart();
+  hide_if_null();
+  count_amount();
+})
+
 function add_to_cart(id) {
   var key = 'product_' + id;
   var x = window.localStorage.getItem(key);
   x = x * 1 + 1;
   window.localStorage.setItem(key, x);
-  update_cart();
   update_orders_input();
   update_orders_button();
+  update_cart();
 }
 
 function remove_from_cart(id) {
@@ -15,37 +24,30 @@ function remove_from_cart(id) {
     x = x * 1 - 1;
     window.localStorage.setItem(key, x);
   }
-  update_cart();
   update_orders_input();
   update_orders_button();
-}
-
-function update_cart() {
-  for(var i=0, len=localStorage.length; i<len; i++) {
-    var button = document.getElementById("in_cart_for_" + id)
-
-    if (button) {
-      var id = localStorage.key(i);
-      var value = localStorage[id];
-      button.innerHTML = "In cart: " + value;
-    }
-  }
+  update_cart();
 }
 
 // function update_cart() {
-//   $.each(localStorage, function(key, value){
-//     document.getElementById("in_cart_for_" + key).innerHTML = "In cart: " + value;
-//   });
+//   for(var i=0, len=localStorage.length; i<len; i++) {
+//     button = document.getElementById("in_cart_for_" + id)
+//     if (button) {
+//       var id = localStorage.key(i);
+//       var value = localStorage[id];
+//       button.innerHTML = "In cart: " + value;
+//     }
+//   }
 // }
 
-$(document).ready(function(){
-  update_cart();
-  update_orders_input('#orders_input');
-  update_orders_input('#orders_input_for_submit');
-  update_orders_button();
-  hide_if_null();
-  count_amount();
-})
+function update_cart() {
+  $.each(localStorage, function(key, value){
+    button = document.getElementById("in_cart_for_" + key)
+    if (button) {
+    button.innerHTML = "In cart: " + value;
+    }
+  });
+}
 
 function cart_get_orders(){
   var orders = '';
@@ -72,9 +74,9 @@ function cart_get_number_of_items() {
   return count
 }
 
-function update_orders_button() {
+function update_orders_button(id) {
   var text = 'Cart (' + cart_get_number_of_items() + ')';
-  $('#update_orders_button').val(text);
+  $(id).val(text);
 }
 
 function count_amount() {
