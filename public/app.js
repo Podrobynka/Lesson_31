@@ -48,23 +48,23 @@ function update_cart() {
   });
 }
 
-function cart_get_orders(){
-  var orders = '';
-  $.each(localStorage, function(key, value){
-    orders = orders + key + '=' + value + ', ';
-  });
-  return orders;
-}
-
 // function cart_get_orders(){
 //   var orders = '';
-//   for(var i=0; i < window.localStorage.length; i++) {
-//     var key = localStorage.key(i);
-//     var value = localStorage.getItem(key);
+//   $.each(localStorage, function(key, value){
 //     orders = orders + key + '=' + value + ', ';
-//   }
+//   });
 //   return orders;
 // }
+
+function cart_get_orders(){
+  var orders = '';
+  for(var i=0; i < window.localStorage.length; i++) {
+    var key = localStorage.key(i);
+    var value = localStorage.getItem(key);
+    orders = orders + key + '=' + value + ', ';
+  }
+  return orders;
+}
 
 function update_orders_input() {
   var orders = cart_get_orders();
