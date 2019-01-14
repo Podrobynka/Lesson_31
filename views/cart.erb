@@ -1,69 +1,70 @@
 <h2>You cart</h2>
-
-<table class="table table-striped" >
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% total_price = 0 %>
-    <% total_quantity = 0 %>
-    <% i = 0 %>
-    <% @items.each do |item| %>
-      <tr id="cart_<%= item[0].id %>" style="display: none;">
-        <td><%= i += 1 if item[1] != '0' %></td>
-        <td><%= item[0].title %></td>
-        <td><%= item[0].price %> UAH</td>
-        <td><%= item[1] %></td>
+<div id="cart">
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
       </tr>
-      <% total_price += item[0].price * item[1].to_i %>
-      <% total_quantity += item[1].to_i %>
-    <% end %>
+    </thead>
+    <tbody>
+      <% total_price = 0 %>
+      <% total_quantity = 0 %>
+      <% i = 0 %>
+      <% @items.each do |item| %>
+        <tr id="cart_<%= item[0].id %>" style="display: none;">
+          <td><%= i += 1 if item[1] != '0' %></td>
+          <td><%= item[0].title %></td>
+          <td><%= item[0].price %> UAH</td>
+          <td><%= item[1] %></td>
+        </tr>
+        <% total_price += item[0].price * item[1].to_i %>
+        <% total_quantity += item[1].to_i %>
+      <% end %>
 
-    <tr>
-      <td></td>
-      <td></td>
-      <td>Total: <%= total_price %> UAH</td>
-      <td><%= total_quantity %></td>
-    </tr>
-  </tbody>
-</table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Total: <%= total_price %> UAH</td>
+        <td><%= total_quantity %></td>
+      </tr>
+    </tbody>
+  </table>
 
-<form action="/place_order" method="POST" role="form">
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="inputName">Name</label>
-      <input name="name" type="string" class="form-control" id="inputName" placeholder="Your name">
+  <form action="/place_order" method="POST" role="form">
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="inputName">Name</label>
+        <input name="name" type="string" class="form-control" id="inputName" placeholder="Your name">
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputPhone">Phone</label>
+        <input name="phone" type="string" class="form-control" id="inputPhone" placeholder="Your phone">
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputEmail">Email</label>
+        <input name="email" type="string" class="form-control" id="inputEmail" placeholder="Email">
+      </div>
+
+      <div class="form-group col-md-9">
+        <label for="inputAddress">Delivery Address</label>
+        <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Region, city, street, house number">
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="inputZip">Zip</label>
+        <input name="zip" type="integer" class="form-control" id="inputZip">
+      </div>
     </div>
 
-    <div class="form-group col-md-4">
-      <label for="inputPhone">Phone</label>
-      <input name="phone" type="string" class="form-control" id="inputPhone" placeholder="Your phone">
+    <div class="form-group col-md-12 text-right">
+      <input name="orders" type="hidden" value="<%= @orders_input %>">
+      <button type="submit" class="btn btn-success btn-lg">Buy</button>
+      <button class="btn btn-danger btn-lg" onclick="return cancel_order()">Cancel</button>
     </div>
-
-    <div class="form-group col-md-4">
-      <label for="inputEmail">Email</label>
-      <input name="email" type="string" class="form-control" id="inputEmail" placeholder="Email">
-    </div>
-
-    <div class="form-group col-md-9">
-      <label for="inputAddress">Delivery Address</label>
-      <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Region, city, street, house number">
-    </div>
-
-    <div class="form-group col-md-3">
-      <label for="inputZip">Zip</label>
-      <input name="zip" type="integer" class="form-control" id="inputZip">
-    </div>
-  </div>
-
-  <div class="form-group col-md-12 text-right">
-    <input name="orders" type="hidden" value="<%= @orders_input %>">
-    <button type="submit" class="btn btn-success btn-lg">Buy</button>
-    <button class="btn btn-danger btn-lg" onclick="return cancel_order()">Cancel</button>
-  </div>
-</form>
+  </form>
+</div>
