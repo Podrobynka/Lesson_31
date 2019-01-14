@@ -63,8 +63,8 @@
 
     <div class="form-group col-md-12 text-right">
       <input name="orders" type="hidden" value="<%= @orders_input %>">
-      <button type="submit" class="btn btn-success btn-lg">Buy</button>
-      <button class="btn btn-danger btn-lg" onclick="return cancel_order()">Cancel</button>
+      <button type="submit" id="buy">Buy</button>
+      <button id="cancel" onclick="return cancel_order()">Cancel</button>
     </div>
   </form>
 </div>

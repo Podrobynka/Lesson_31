@@ -1,6 +1,6 @@
 <table class="table">
     <tbody>
-      <% @orders&.find_each do |order| %>
+      <% @orders&.each do |order| %>
       <tr>
         <td><%= order.name %></td>
         <td><%= order.phone %></td>
@@ -8,6 +8,7 @@
         <td><%= order.address %></td>
         <td><%= order.zip %></td>
         <td><%= order.orders %></td>
+        <td><%= order.created_at %></td>
       </tr>
       <% end %>
     </tbody>

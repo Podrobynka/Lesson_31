@@ -1,7 +1,57 @@
 #update_orders_button {
-    background-color: rgb(248, 249, 250);
-    border: none;
-    font-size: 22px;
-    padding: 10px 20px;
-    text-decoration-line: underline;
+  background-color: rgb(248, 249, 250);
+  border: none;
+  font-size: 22px;
+  padding: 10px 20px;
+  color: #cc2900;
+}
+
+#buy {
+	background-color: #cc2900;
+	color: blanchedalmond;
+	border: none;
+  font-size: 22px;
+  padding: 10px 20px;
+}
+
+#cancel {
+	color: #330000;
+	background-color: #af9d9d;
+	border: none;
+  font-size: 22px;
+  padding: 10px 20px;
+}
+
+.navbar {
+	background-color: #cc2900;
+	margin-left: 0%;
+	margin-right: 0%;
+}
+
+.navbar-brand {
+	color: blanchedalmond;
+}
+
+.nav-link {
+	color: blanchedalmond;
+}
+
+.add {
+	background-color: #cc2900;
+	border: none;
+	color: blanchedalmond;
+}
+
+.remove {
+	border: none;
+	color: #330000;
+	background-color: #af9d9d;
+}
+
+footer {
+	background-color: #cc2900;
+	color: blanchedalmond;
+	margin-top: 20px;
+	margin-left: 0%;
+	margin-right: 0%;
 }

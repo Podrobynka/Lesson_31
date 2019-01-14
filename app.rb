@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'sinatra/reloader' # if development?
+require 'sinatra/reloader' if development?
 require 'sinatra/activerecord'
 
 set :database, 'sqlite3:pizzashop.db'
@@ -32,7 +32,7 @@ post '/cart' do
 end
 
 get '/order' do
-  @orders = Order.all
+  @orders = Order.all.order(created_at: :desc)
   erb :orders
 end
 
