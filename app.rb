@@ -35,7 +35,7 @@ end
 post '/place_order' do
   @orders = Order.all
   Order.create(params)
-  erb 'Your order is accepted.'
+  erb :order_placed
 end
 
 def parse_orders_line(orders_input)
